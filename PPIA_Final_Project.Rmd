@@ -1,0 +1,95 @@
+---
+title: "Data Science Final"
+author: "Shisham Adhikari"
+date: "7/15/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(tidycensus)
+library(tigris)
+library(leaflet)
+```
+
+### Problem 2: Choropleth Maps
+```{r, eval = TRUE}
+api_key <- "eb333507290d5a3fbd78855b5e62c9a9953924c5"
+```
+
+a. Grabbing data on the median household income for Pennsylvania:
+```{r}
+county_income <- get_acs(geography = "county", 
+                  year = 2018,
+                  variables = "B19013_001",  
+                  state = "Pennsylvania",
+                  geometry = TRUE, 
+                  key = api_key, 
+                  cache_table = TRUE) 
+county_rent <- get_acs(geography = "county", 
+                  year = 2018,
+                  variables = "B25064_001",  
+                  state = "Pennsylvania",
+                  geometry = TRUE, 
+                  key = api_key, 
+                  cache_table = TRUE) 
+```
+
+b. Three choropleth maps of gross rent, one for each geography resolution:
+```{r}
+ggplot(data = county_income, mapping = aes(geometry = geometry)) + 
+  geom_sf(aes(fill = estimate)) +
+  coord_sf() +
+  scale_fill_viridis_c() + theme_void() +
+  labs(title="Gross median income across Pennsylvania Counties", position="center")+
+  theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(data = county_rent, mapping = aes(geometry = geometry)) + 
+  geom_sf(aes(fill = estimate)) +
+  coord_sf() +
+  scale_fill_viridis_c() + theme_void()+
+  labs(title="Gross median rent across Pennsylvania Counties")+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+We see that the eastern side of the multomah county_income has the lowest median gross rent or no data in block group resolution. This is probably because not many people live there. We see in the first map that the western places have higher median gross rent than the rest. In the tract resolution, around Portland seems to have the highest median gross rent. Except for that, the median gross rent is pretty variable across the county_income regions.   
+Tract seems to be the most useful resolution for this variable because the county_income subdivision is pretty broad category and has just five divisions and a lot of data is missing (colored grey) in the block group resolution. 
+ 
+c. Making the county_income map interactive:
+```{r}
+pal <- colorNumeric(palette = "viridis", domain = county_income$estimate)
+content <- paste("<b>", county_income$NAME,
+                 "</b></br>", "Median Rent =", county_rent$estimate)
+content
+county_income %>%
+   leaflet(options = leafletOptions(minZoom = 4, maxZoom = 15)) %>%
+  addTiles() %>%
+  addPolygons(popup = content, color = ~pal(estimate),
+              stroke = FALSE, fillOpacity = 0.9)%>%
+  addLegend("topright", pal = pal, 
+            values = ~estimate, title = "Median Income",
+            opacity = 1)
+```
+
+#County-wise Racial Composition of Pennsylvania
+```{r}
+racial_composition <-get_acs(geography = "county", 
+                  year = 2018,
+                  variables = c(Non_hispanic_white = "B03002_003",
+                              Non_hispanic_black = "B03002_004", 
+                              Non_hispanic_asian = "B03002_006",
+                              Hispanic = "B03002_012"),  
+                  state = "Pennsylvania",
+                  geometry = TRUE, 
+                  key = api_key, 
+                  summary_var = "B03002_001",
+                  cache_table = TRUE) 
+racial_composition %>%
+  mutate(racial_percentage = 100 * (estimate / summary_est)) %>%        
+  ggplot(aes(fill = racial_percentage)) +
+  facet_wrap(~variable) +                       
+  geom_sf(color = NA, size = 0.1) +
+  scale_fill_viridis(direction = -1)+
+  theme_minimal()
+```
+
