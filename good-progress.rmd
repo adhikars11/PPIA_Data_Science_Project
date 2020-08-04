@@ -2,8 +2,23 @@
 title: "Visualizing Inequities in Seattle"
 author: "By Shisham Adhikari and Dominick Ta"
 output:
-  html_document: default
+  prettydoc::html_pretty:
+    highlight: github
+    theme: hpstr
 ---
+
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(tidycensus)
+library(tigris)
+library(leaflet)
+library(viridis)
+library(prettydoc)
+library(magick)
+library(rsvg)
+options(tigris_use_cache = TRUE)
+```
 
 ### this doc has a lot of detailed notes, maybe too detailed...
 
@@ -107,17 +122,27 @@ The findings from our report would be most relevant for those who...
 - are interested in gentrification and housing inequality
 - are interested in racial inequity and segregation
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-library(tidyverse)
-library(tidycensus)
-library(tigris)
-library(leaflet)
-library(viridis)
-options(tigris_use_cache = TRUE)
+####A map of Washington State showing different counties
+```{r,fig.height=3,fig.width=4, warning=FALSE}
+library(magick)
+library(rsvg)
+WA <- image_read("https://content.lib.washington.edu/imls/kcsnapshots/images/wa-state-map.gif")
+print(WA)
 ```
 
-```{r, eval = TRUE, include=FALSE}
+####A map of King County showing different cities in it
+```{r,fig.height=3, fig.width=2.5, warning=FALSE}
+King <- image_read("https://content.lib.washington.edu/imls/kcsnapshots/images/kc-map.gif")
+print(King)
+```
+
+#### A map of Seattle showing different council districts
+```{r,fig.height=2.5, fig.width=2, warning=FALSE}
+seattle <-image_read("https://amekorealty.com/wp-content/uploads/2019/05/Seattle-Neighborhoods.gif")
+print(seattle)
+```
+
+```{r, eval = TRUE, include=FALSE, warning=FALSE}
 #api_key <- "eb333507290d5a3fbd78855b5e62c9a9953924c5"
 census_api_key('5714ee4a8992db912a5256472fdf0fef5de96f64', install = TRUE, overwrite = TRUE)
 # census_vars_1990 <- load_variables(1990, "sf1", cache = TRUE)
@@ -128,7 +153,7 @@ acs_vars <- load_variables(2018, "acs5", cache = TRUE)
 # View(census_vars)
 ```
 
-```{r}
+```{r, warning=FALSE}
 # wrapper function to get ACS data more easily
 # very helpful! used throughout the entire program
 get_wa_data <- function(acs_var, year) {
@@ -151,7 +176,22 @@ rent_2018 <- get_wa_data(rent_var, 2018)
 educ_var <- "B16010_041"
 educ_2018 <- get_wa_data(educ_var, 2018)
 ```
-### Income Inequality over the Past Decade
+
+
+##Income Inequality
+We can look into the ratio of the mean income for the highest quintile (top 20 percent) of earners divided by the mean income of the lowest quintile (bottom 20 percent) of earners in King's county to get an idea of income inequality over time. The data is based on multiyear "period" estimates derived from the American Community Survey (ACS) data sample collected over time. 
+
+### King County Income Inequality over the Past Decade
+```{r, fig.height=4, fig.width=5, warning=FALSE}
+income_inequality <- read_csv("2020RATIO053033.csv")
+income_inequality <- income_inequality %>%
+ rename(Date=DATE, Ratio='2020RATIO053033')
+ggplot(income_inequality, aes(x=Date, y=Ratio)) +
+  geom_line(color='maroon')+
+  theme_linedraw()+
+  theme(panel.background = element_rect(fill = 'lavender'))
+```
+
 
 #### Background info on income-ranges in Seattle
 
@@ -173,7 +213,7 @@ With that information in mine, here is our graph and important things to note.
     - look closely at... insert here
     - look closely at... insert here
 
-```{r}
+```{r, warning=FALSE}
 # Function to draw map of income with nice binning.
 incomeMap <- function(income_df, year){
   pal <- colorBin(palette = "magma",
@@ -241,7 +281,7 @@ We've proven the idea that Seattle has income inequality issues, but what about 
 - Is it true that the people living in low-income south Seattle areas are mostly people of color? 
 - Are there people of color who are living in North Seattle?
 
-```{r, include = FALSE}
+```{r, include = FALSE, warning=FALSE}
 # Variables for population of racial groups
 total_var <- "B02001_001"
 white_var <- "B02001_002"
@@ -285,7 +325,7 @@ raceMap <- function(race_var, year, racial_group, binning, latitude = 47.600315,
 #### Spatial Distribution of Whites in Seattle
 
 White people most definitely live primarily in North Seattle and in expensive waterfront areas
-```{r}
+```{r, warning=FALSE}
 raceMap(white_var, 2018, "Whites", 
         c(0, 3000, 6000, 9000, 12000))
 ```
@@ -302,7 +342,7 @@ Blacks were primarily located in the places that Whites were not.
 
 TODO: Is there a way to put this kind of map side-by-side the map for Whites in the section above??
 
-```{r}
+```{r, warning=FALSE}
 raceMap(black_var, 2018, "Blacks", 
         c(0, 500, 1000, 1500, 2000))
 ```
@@ -319,7 +359,7 @@ Asians are not a monolithic entity.
 
 (TODO: LEAFLET MARKER) There is a large number of Asians in South Seattle in Rainier Valley and Beacon Hill. One explanation for this is that South Seattle is home to large communities of Chinese, Vietnamese, Filipino, Cambodian, Japanese, and Hmong families, as evident by many asian-subgroup-centered community centers, churches, temples, and businesses in South Seattle.
 
-```{r}
+```{r, warning=FALSE}
 raceMap(asian_var, 2018, "Asians",
         c(0, 750, 1500, 2250, 3000, 3750, 4500))
 ```
@@ -328,14 +368,14 @@ raceMap(asian_var, 2018, "Asians",
 
 (LEAFLET MARKER) Native Americans live around Duwamish River. An explanation for this is the presence of the Duwamish Tribe.
 
-```{r}
+```{r, warning=FALSE}
 raceMap(native_american_var, 2018, "Native Americans",
         c(0, 25, 50, 75, 100, 125, 150, 175, 200))
 ```
 
 #### Spatial Distribution of Pacific Islanders in Seattle
 
-```{r}
+```{r, warning=FALSE}
 raceMap(pacific_islander_var, 2018, "Pacific Islanders",
         c(0, 25, 50, 75, 100, 125, 150, 175, 200))
 ```
@@ -351,7 +391,7 @@ There are important limitations of the visualizations above that we must highlig
 We decided to track these subgroups utilizing the language spoken at home, which are major indicators of ethnicity.
 
 We used data from 2014 due to difficulties getting language data from 2018. (TODO: WHY?)
-```{r}
+```{r, warning=FALSE}
 # Variables for Languages Spoken at Home
 total_lang_var <- "B16001_001"
 only_english_var <- "B16001_002"
@@ -400,7 +440,7 @@ Hispanics tend to be living in the unincorporated areas south of Seattle that te
 (MARKER) Waterfront?
 
 (MARKER) Another important thing to note is that there are much larger populations of Latinos in Eastern Washington, where the costs of living are much cheaper. Latinos also make-up the majority of the workforce in Washington's booming agriculture industry, to which Eastern Washington is home to.
-```{r}
+```{r, warning=FALSE}
 get_lang_map(spanish_var, "Hispanics", 2014,
              c(0, 500, 1000, 1500, 2000))
 ```
@@ -418,7 +458,7 @@ An explanation for this severe undercounting can be explained through the Americ
 
 This highlights that there are important accessibility measures that must be taken by ACS to remedy this issue. It also highlights the importance of community outreach and education, to which there has been a huge movement in the Khmer community recently, as many youth are advocating their older generations of the trustworthiness of the survey and its inability to affect immigration issues.
 
-```{r}
+```{r, warning=FALSE}
 get_lang_map(khmer_var, "Cambodians", 2014, 
              c(0, 50, 100, 150, 200))
 ```

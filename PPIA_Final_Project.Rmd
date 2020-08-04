@@ -5,7 +5,7 @@ date: "7/15/2020"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(tidycensus)
@@ -73,6 +73,7 @@ county_income %>%
 
 #County-wise Racial Composition of Pennsylvania
 ```{r}
+library(viridis)
 racial_composition <-get_acs(geography = "county", 
                   year = 2018,
                   variables = c(Non_hispanic_white = "B03002_003",
