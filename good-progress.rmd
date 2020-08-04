@@ -2,9 +2,10 @@
 title: "Visualizing Inequities in Seattle"
 author: "By Shisham Adhikari and Dominick Ta"
 output:
-  prettydoc::html_pretty:
+  prettydoc::html_pretty: 
     highlight: github
     theme: hpstr
+    toc: true
 ---
 
 ```{r setup, include=FALSE, warning=FALSE}
@@ -20,9 +21,8 @@ library(rsvg)
 options(tigris_use_cache = TRUE)
 ```
 
-### this doc has a lot of detailed notes, maybe too detailed...
 
-notes:
+Notes:
 
 - im takin this project kinda far imo, which is good cuz we will prob get a perfect grade but its also a lot more work than expected
    - I have a lot of ideas but I don't expect that we'll get them all completed in time, and I don't think we should try to. 
@@ -72,8 +72,7 @@ To-Do List for Dom and Shisham in order of priority:
 7. Add "EasyButtons" https://rstudio.github.io/leaflet/morefeatures.html#easybutton
 for things we want to highlight. 
    - For example, a button could automatically pan the map all the way to a notable area in Eastern Washington when we're talking about Hispanics
-
-### Table of Contents
+ Table of Contents
 
 1. Purpose
 2. Income Inequality over the Past Decade
@@ -98,7 +97,7 @@ for things we want to highlight.
     b. Education
     c. Social Consciousness
 
-### Purpose
+## Introduction and Purpose of the Project
 
 The inspiration behind this project began with interests in learning more about income inequality, gentrification, and segregation of the community that Dominick grew up in.
 A 'fact of life' that Dominick had discovered at a young age was that North Seattle is where wealthy white people live, while South Seattle is where everyone else lived; living further South directly correlated with lower income. However, he had never seen this phenomenon mapped out. It is relatively well-known by those who live here that Seattle is segregated, and there have been articles about segregation in Seattle, but there has never been a visualization of this segregation. The visualizations and analyses in this project are the product of Shisham's expertise in R and economics, Dominick's background knowledge in Seattle's history of segregation and inequality, and our shared interest in utilizing data science for social good.
@@ -178,10 +177,10 @@ educ_2018 <- get_wa_data(educ_var, 2018)
 ```
 
 
-##Income Inequality
+##Income Inequality Over the Past Decade
 We can look into the ratio of the mean income for the highest quintile (top 20 percent) of earners divided by the mean income of the lowest quintile (bottom 20 percent) of earners in King's county to get an idea of income inequality over time. The data is based on multiyear "period" estimates derived from the American Community Survey (ACS) data sample collected over time. 
 
-### King County Income Inequality over the Past Decade
+### Income Inequality Over Time in the King County 
 ```{r, fig.height=4, fig.width=5, warning=FALSE}
 income_inequality <- read_csv("2020RATIO053033.csv")
 income_inequality <- income_inequality %>%
@@ -193,14 +192,14 @@ ggplot(income_inequality, aes(x=Date, y=Ratio)) +
 ```
 
 
-#### Background info on income-ranges in Seattle
+### Background info on Income-ranges in Seattle
 
 Local economies vary from city to city throughout America. This section serves to provide background info on the implications of different income levels in the Seattle area.
 
 - In Seattle, families of 5 with a household income under $102,900 are considered low-income. (Based on eligibility for low-income public housing https://www.seattlehousing.org/housing/sha-housing/eligibility/income-level-low-income-public-housing)
 - WILL ADD MORE LATER
 
-#### Spatial Distribution of Median Income over 2009-2018
+### Spatial Distribution of Median Income over 2009-2018
 With that information in mine, here is our graph and important things to note.
 
 1. Incomes increased all across the map.
@@ -213,6 +212,7 @@ With that information in mine, here is our graph and important things to note.
     - look closely at... insert here
     - look closely at... insert here
 
+####Distribution of Median Income, 2009-2018
 ```{r, warning=FALSE}
 # Function to draw map of income with nice binning.
 incomeMap <- function(income_df, year){
@@ -243,14 +243,13 @@ incomeMap <- function(income_df, year){
               opacity = 1) %>%
     setView(lat = 47.600315, lng = -122.331961, 10.5)
 }
-
 # Draw the three maps over time
 incomeMap(income_2009, "2009")
 incomeMap(income_2014, "2014")
 incomeMap(income_2018, "2018")
 ```
 
-#### Conclusions
+### Conclusions
 
 1. Cause of Rising Income
    a. Seattle's tech boom (amazon, microsoft, google, etc.)
@@ -273,7 +272,7 @@ incomeMap(income_2018, "2018")
       - Many of Dom's peers that he grew up with were forced to move because their families weren't able to afford rent anymore. They were forced to move further south.
       - I wrote a paper on this before so I can write it up
       
-### Spatial Distribution of Racial Groups
+## Spatial Distribution of Racial Groups
 
 #### Next Question: Is there racial segregation?
 
@@ -290,13 +289,10 @@ native_american_var <- "B02001_004"
 asian_var <- "B02001_005"
 pacific_islander_var <- "B02001_006"
 other_race_var <- c("B02001_007", "B02001_008", "B02001_009", "B02001_010")
-
 # Function to draw map of race with nice binning.
 # default latitude/longitude centers map on South Seattle
-
 # settings for framing on entire Seattle area:
 # latitude = 47.600315, longitude = -122.331961, zoom = 10.5
-
 # settings for framing on south Seattle area:
 # latitude = 47.516253, longitude = -122.278069, zoom = 10.5
 raceMap <- function(race_var, year, racial_group, binning, latitude = 47.600315, longitude = -122.331961, zoom = 10.5){
@@ -322,15 +318,17 @@ raceMap <- function(race_var, year, racial_group, binning, latitude = 47.600315,
 }
 ```
 
-#### Spatial Distribution of Whites in Seattle
+### Spatial Distribution of Whites in Seattle
 
 White people most definitely live primarily in North Seattle and in expensive waterfront areas
+
+####Distribution of Whites in Seattle in 2018
 ```{r, warning=FALSE}
 raceMap(white_var, 2018, "Whites", 
         c(0, 3000, 6000, 9000, 12000))
 ```
 
-#### Spatial Distribution of Blacks in Seattle
+### Spatial Distribution of Blacks in Seattle
 
 This map was a DRASTIC difference compared to the map for Whites.
 
@@ -342,12 +340,13 @@ Blacks were primarily located in the places that Whites were not.
 
 TODO: Is there a way to put this kind of map side-by-side the map for Whites in the section above??
 
+####Distribution of Blacks in Seattle in 2018
 ```{r, warning=FALSE}
 raceMap(black_var, 2018, "Blacks", 
         c(0, 500, 1000, 1500, 2000))
 ```
 
-#### Spatial Distribution of Asians in Seattle
+### Spatial Distribution of Asians in Seattle
 
 "Asian" is a large umbrella which explains the widespread number of Asians.
 Later, we will attempt to do some disaggregated data analysis for Asian groups, as 
@@ -359,32 +358,35 @@ Asians are not a monolithic entity.
 
 (TODO: LEAFLET MARKER) There is a large number of Asians in South Seattle in Rainier Valley and Beacon Hill. One explanation for this is that South Seattle is home to large communities of Chinese, Vietnamese, Filipino, Cambodian, Japanese, and Hmong families, as evident by many asian-subgroup-centered community centers, churches, temples, and businesses in South Seattle.
 
+####Distribution of Asians in Seattle in 2018
 ```{r, warning=FALSE}
 raceMap(asian_var, 2018, "Asians",
         c(0, 750, 1500, 2250, 3000, 3750, 4500))
 ```
 
-#### Spatial Distribution of Native Americans in Seattle
+### Spatial Distribution of Native Americans in Seattle
 
 (LEAFLET MARKER) Native Americans live around Duwamish River. An explanation for this is the presence of the Duwamish Tribe.
 
+####Distribution of Native Americans in Seattle in 2018
 ```{r, warning=FALSE}
 raceMap(native_american_var, 2018, "Native Americans",
         c(0, 25, 50, 75, 100, 125, 150, 175, 200))
 ```
 
-#### Spatial Distribution of Pacific Islanders in Seattle
+### Spatial Distribution of Pacific Islanders in Seattle
 
+####Distribution of Pacific Islanders in Seattle in 2018
 ```{r, warning=FALSE}
 raceMap(pacific_islander_var, 2018, "Pacific Islanders",
         c(0, 25, 50, 75, 100, 125, 150, 175, 200))
 ```
 
-#### Conclusions of these Racial spatial distributions
+### Conclusions of these Racial spatial distributions
 
 There are important limitations of the visualizations above that we must highlight. These racial data visualizations were not able to highlight the unique experiences of certain ethnic groups such as Latinos and Asian subgroups. There are health disparities, language needs, and educational disparities that can be remedied through targeting these specific groups.
 
-### Spatial Distribution of Ethnic Groups
+## Spatial Distribution of Ethnic Groups
 
 #### Next Question: What about ethnic group patterns?
 
@@ -404,7 +406,6 @@ vietnamese_var <- "B16001_087"
 khmer_var <- "B16001_090"
 thai_lao_var <- "B16001_093"
 tagalog_var <- "B16001_099"
-
 # Function to track ethnic groups based on language
 get_lang_map <- function(lang_var, ethnic_group, year, binning) {
   lang_df <- get_wa_data(lang_var, year)
@@ -431,7 +432,7 @@ get_lang_map <- function(lang_var, ethnic_group, year, binning) {
 }
 ```
 
-#### Spatial Distribution of Hispanics in Seattle
+### Spatial Distribution of Hispanics in Seattle
 
 Hispanics tend to be living in the unincorporated areas south of Seattle that tend to be more underresourced than those living in the southern skirts of Seattle.
 
@@ -445,7 +446,7 @@ get_lang_map(spanish_var, "Hispanics", 2014,
              c(0, 500, 1000, 1500, 2000))
 ```
 
-#### Spatial Distribution of Cambodians in Seattle
+### Spatial Distribution of Cambodians in Seattle
 We discovered another limitation to our data visualizations. The data did not accurately reflect the population of Khmer individuals in the Seattle area. This is dangerous as individuals who are not familiar with the Khmer community in Seattle may take this data to be more accurate than it is in reality.
 
 In this visualization, we can see that there are virtually no Khmer individuals in South Seattle (LEAFLET MARKER), when in actuality, there are numerous Khmer communities, temples, and youth groups. (LEAFLET MARKER) We can also see that there are lots of Khmer individuals in Bellevue, one of Seattle's sister cities and a high income city. One could interpret this to mean that the Khmer population in Seattle is a small, but affluential population, when it is far from that.
@@ -458,24 +459,25 @@ An explanation for this severe undercounting can be explained through the Americ
 
 This highlights that there are important accessibility measures that must be taken by ACS to remedy this issue. It also highlights the importance of community outreach and education, to which there has been a huge movement in the Khmer community recently, as many youth are advocating their older generations of the trustworthiness of the survey and its inability to affect immigration issues.
 
+####Distribution of Hispanics in Seattle in 2018
 ```{r, warning=FALSE}
 get_lang_map(khmer_var, "Cambodians", 2014, 
              c(0, 50, 100, 150, 200))
 ```
 
-#### Spatial Distribution of Hmong in Seattle
+### Spatial Distribution of Hmong in Seattle
 
 i will do this later or take it out
 
-#### Spatial Distribution of TBD in Seattle
+### Spatial Distribution of TBD in Seattle
 
 i will do this later or take it out
 
-#### Conclusions of these Ethnic spatial distributions
+### Conclusions of these Ethnic spatial distributions
 
 Must fill this part out eventually.
 
-### Implications of these Visualizations
+## Implications of these Visualizations
 
 1. COVID-19 example from a few days ago 
     - https://www.seattletimes.com/seattle-news/health/seattle-to-open-another-free-coronavirus-testing-location-to-reach-more-bipoc/
