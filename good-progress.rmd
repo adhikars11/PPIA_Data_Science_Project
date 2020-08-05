@@ -77,11 +77,21 @@ knitr::include_graphics(c("https://amekorealty.com/wp-content/uploads/2019/05/Se
 
 In the map above, we can see that Seattle is divided up into a few arbitrary areas. Throughout this report, when we say North Seattle, we won't mean it necessarily in the sense that is demonstrated in the figure above, but in a more simple sense to establish a dichotomy: North Seattle represents the area above the center of Seattle, and South Seattle represents the area below the center of Seattle.
 
+In addition, here is Dominick's attempt to summarize local opinion on the different Seattle areas, utilizing the areas in the figure on the left for reference.
+
+- The northern area of West Seattle and area along the waterfront of West Seattle is known to have relatively higher  
+
 ### iii. What is low-income in Seattle?
 
 Our report will be analyzing income inequality, therefore it is important that there is an understanding of what low-income looks like in Seattle, as economies can vary greatly from city to city throughout America.
 
-Shockingly, families of 5 in Seattle with a household income under $102,900 are considered to be low-income (as based on eligibility for low-income [public housing](https://www.seattlehousing.org/housing/sha-housing/eligibility/income-level-low-income-public-housing)).
+Shockingly, families of 5 in Seattle with a household income under $102,900 are considered to be low-income, as based on eligibility for low-income [public housing](https://www.seattlehousing.org/housing/sha-housing/eligibility/income-level-low-income-public-housing).
+
+However, low-income in this sense may be too strict as it is a blanket classification based on data from the entire Seattle area. This information is useful nonetheless due to its ability to be compared to the eligibility of low-income public housing in other cities throughout the nation.
+
+From a more practical local perspective, having an income below $102,900 would only be considered low-income if you wanted to live in North Seattle. 
+
+Trying to make it with an income less than this amount in Seattle is easy with just one crazy trick: 'lower your standards' and move south! This is an unfortunate fact of life in Seattle that has led to a lot of the de facto segregation and income inequality we will see throughout this report.
 
 ### iv. Navigating our visualizations
 
@@ -146,7 +156,7 @@ ggplot(income_inequality, aes(x=Date, y=Ratio)) +
 
 By looking into the ratio of the mean income for the highest quintile (top 20 percent) of earners divided by the mean income of the lowest quintile (bottom 20 percent) of earners in King's county we can get an idea of income inequality over time. Here we can see that income inequality has sharply risen from 2010 to 2014 and leveled off since then. (Data is based on multiyear "period" estimates derived from the American Community Survey (ACS) data sample collected over time)
 
-This visualization is just one of many that have been created about Seattle to demonstrate its inequities. It is a proven fact that Seattle has inequities, and the purpose of this report is not to demonstrate this further.
+This visualization is just one of many that have been created about Seattle to demonstrate its inequities. It is a proven fact that Seattle has inequities, and the purpose of this report is not to contribute to this established body of knowledge, but to provide a different perspective.
 
 The goal of the visualizations in the following parts of this report is to provide a more intuitive spatial understanding of these inequities. It is one thing to 'know' that inequities exist through numbers and graphs, but seeing inequities can have a much larger impact on an individual in understanding this issue.
 
@@ -222,17 +232,20 @@ incomeMap(income_2018, "2018") %>%
 
 ### iii. Conclusions
 
-1. Cause of Rising Income
-   a. Seattle's tech boom (amazon, microsoft, google, etc.)
-      - More tech workers more income! and more gentrification and higher rent...
+**Rising Income**
 
-2. Two Major Causes of Income Inequality in Seattle
-   a. 2008 economic crisis exacerbated income inequalities. 
-      - my source of this is wikipedia:
-          - https://en.wikipedia.org/wiki/Great_Recession#Overview
-          - The distribution of household incomes in the United States became more unequal during the post-2008 economic recovery.
-          - Income inequality in the United States grew from 2005 to 2012 in more than two-thirds of metropolitan areas
-
+  Income increased all throughout Seattle due to the economic growth that Seattle's tech boom has provided. Notably, Seattle is home to Amazon headquarters, bringing lots of new white-collar and blue-collar jobs to the area due to Amazon having become such a powerful force over the past decade.
+  
+  This is also because of Seattle passing a minimum wage law in 2014 that established the long-term plan to increase minimum wage from the \$9/hr it was in 2014 to the \$15/hr it is today. [Learn more here](https://www.cnbc.com/2020/01/02/seattle-passed-a-15-minimum-wage-law-in-2014-heres-how-its-turned-out-so-far.html).
+  
+**Income Inequality**
+   
+   We looked into what could have caused this income inequality. There is [some evidence and counter-evidence](https://www.tandfonline.com/doi/full/10.1080/15140326.2019.1620982) that the 2008 recession led to income inequality across the nation. However, a major Seattle development in 2009 is a more likely cause of this issue.
+   
+   In 2009, the Link Light Rail public transportation system was opened to the public, a long rail line connecting South Seattle to North Seattle that for the first time provided a fast mass public transportation system throughout the Seattle area.
+   
+   However this new development came with
+   
    b. Link light rail grand opening in 2009
       - This train provided high-salary tech workers easy transportation from low-income areas of South Seattle to their workplace in North Seattle. 
       - Even though South Seattle is far away from the workplaces of these tech workers in North Seattle, the train shortened commute times and provided more incentive to move into the low-income southern areas of Seattle.
@@ -241,11 +254,7 @@ incomeMap(income_2018, "2018") %>%
       
 ## IV. Spatial Distribution of Racial Groups
 
-We've demonstrated that Seattle has income inequality issues, but what about racial inequalities?
-
-We have provided markers for important locations in the Seattle area, with different analyses for each group. 
-
-There is a lot of information to take in!
+We've demonstrated that Seattle has income inequality issues, but what about racial inequalities? We have provided markers for important locations in the Seattle area, with different analyses for each group. There is a lot of information to take in!
 
 As you dive deep into each marker location and explore our visualization, keep these questions in mind:
 
@@ -398,14 +407,6 @@ raceMap(native_american_var, 2018, "Native Americans",
         c(0, 25, 50, 75, 100, 125, 150, 175, 200))
 ```
 
-### v. Pacific Islanders
-
-#### a.  Distribution of Pacific Islanders, 2018
-```{r, warning=FALSE}
-raceMap(pacific_islander_var, 2018, "Pacific Islanders",
-        c(0, 25, 50, 75, 100, 125, 150, 175, 200))
-```
-
 ### vi. Conclusions
 
 There are important limitations of the visualizations above that we must highlight.
@@ -506,17 +507,7 @@ get_lang_map(khmer_var, "Cambodians", 2014,
              c(0, 50, 100, 150, 200))
 ```
 
-### iii. Hmong
-
-i will do this later or take it out
-
-#### a. Distribution of Hmong, 2014
-```{r, warning=FALSE}
-get_lang_map(hmong_var, "Hmong", 2014, 
-             c(0, 50, 100, 150, 200))
-```
-
-### iv. Vietnamese
+### iii. Vietnamese
 
 i will do this later or take it out
 
@@ -526,25 +517,30 @@ get_lang_map(vietnamese_var, "Vietnamese", 2014,
              c(0, 50, 100, 150, 200))
 ```
 
-### v. Conclusions
+### iv. Conclusions
 
 Must fill this part out eventually.
 
-## VI. Final Implications
+## VI. Limitations
 
-1. COVID-19 example from a few days ago 
-    - https://www.seattletimes.com/seattle-news/health/seattle-to-open-another-free-coronavirus-testing-location-to-reach-more-bipoc/
-    - The aim of the two new locations is to reach more of the city’s Black and Indigenous people and other people of color, many of whom call the South End home, Mayor Jenny Durkan said during a news conference Friday.
-    - “Sadly, for our communities of color, and particularly for Black and Latinx communities, this crisis has disproportionally hit them,” she said.
-    
-2. Educational disparities
-    - determine where youth who are non-native english speakers live
-    - for example, if we know where latino students are centrally located, bilingual education resources can be targeted more efficiently
-    - utilizes school district budgets more effectively
-    
-3. Highlights racial disparities in a time of need
-    - BLM is a movement gaining wide support, and for good reason
-    - not everyone agrees with movement. there are those who don't believe that there is systemic racism in today's world
-    - these visualizations demonstrate systemic racial inequality exacerbated by an economic crisis and poorly implemented public transportation systems
-    - the individual actions of minorities cannot account for these drastic changes in such a short amount of time (~10 years)
-    - these drastic inequalities must be the result of systemic issues
+While this report has a lot of useful visualizations that can be used for a variety of important applications, it is important to note some notable limitations.
+
+As evidenced by the case study on Cambodians in Seattle, the data used in this study is not an accurate representation of all groups in Seattle. Data visualizations like these cannot be trusted unless you are able to get community input that will provide useful insight that cannot be seen through the numbers.
+
+Therefore, we must admit that we have not been able to get input from all the communities in this study. Dominick has significant connections with the Cambodian and Vietnamese community so therefore he has been able to provide those populations an accurate representation.
+
+Other groups in this study have not been given the same treatment, therefore these results must not be taken as truth, but as an indicator.
+
+In addition, this report was completed in a relatively short amount of time which was not enough time to provide an ample analysis of all groups.
+
+Future iterations of this project would need more community input and a more detailed analysis of the experiences of all groups in the large area that is Seattle.
+
+## VII. Final Implications
+
+Spatial visualizations like these are vital for public servants to do their job in an equitable manner.
+
+On July 31st 2020, just last week (at the time of publication), a [free COVID-19 testing site](https://www.seattletimes.com/seattle-news/health/seattle-to-open-another-free-coronavirus-testing-location-to-reach-more-bipoc/) was announced to open in the Rainier Beach neighborhood of South Seattle due to the high populations of Black, Latino, and other populations of color that are disproportionately impacted by the pandemic. This was a vital policy decision that was informed by data analyses like ours. Without data available like this, policy decisions would be made 'blind' and be a much more ineffective process leaving many communites of color susceptible to institutional neglect.
+
+This data analyses can be applied to areas besides health care, such as education. Seattle has large populations of non-native English speakers that require special resources in language education. By knowing where these non-native English speakers live, resources can be more effectively distributed to these populations in order to utiize district funds more efficiently, while also uplifting students of color. Education is one of many fields where this data could be used to inform policy decisions for social and economic good, such as immigration reform, drug abuse intervention and prevention, and housing discrimination.
+
+Lastly, these issues are vital tools in the fight against the racial pandemic in America. The Black Lives Matter movement has experienced a rapid gain in traction from many companies, demographics, and communities that had previously not supported the movement, which is vital to having change being enacted. Unfortunately, there are still large swathes of individuals who do not support BLM due to a variety of reasons, which a major reason being a lack of consciousness in the racial inequities that plague our country. There are individuals who may say that they 'know' there are racial inequities, but do not feel it is a big enough problem to justify the movement. Data visualizations like these are powerful tools to raise the racial consciousness of individuals within our society. It is hard to look at these harsh disparities face-to-face and sincerely believe that this is not an issue worth fighting for.
