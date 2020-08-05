@@ -34,17 +34,17 @@ census_api_key('5714ee4a8992db912a5256472fdf0fef5de96f64', install = TRUE, overw
 
 ## I. Introduction and Purpose of the Project
 
-The visualizations and analyses in this project are the proud product of Shisham's expertise in R and economics, Dominick's background knowledge in Seattle's history of segregation and inequality, and our shared interest in utilizing data science for social good. The inspiration began with interests in learning more about income inequality, gentrification, and segregation of the community that Dominick grew up in.
+The visualizations and analyses in this project are the proud product of Shisham's expertise in R and economics, Dominick's background knowledge in Seattle's history of segregation and inequality, and our **shared interest in utilizing data science for social good**. The inspiration began with interests in learning more about income inequality, gentrification, and segregation of the community that Dominick grew up in.
 
 Dominick had always been told since a young age that North Seattle was for 'white people' and South Seattle is where everyone else lived. In Seattle, being south meant being low income.
 
-Numerous articles have clearly demonstrated through lots of data analysis that there is clear income inequality and de facto racial segregation, but there has never been a clear visual to provide a spatial understanding of this phenomenon.
+There is a large body of articles that have clearly demonstrated that have **established a fact that there is clear income inequality and de facto racial segregation in Seattle**. However, there has **never been a visual to provide an intuitive spatial understanding** of this phenomenon.
 
 The visualizations and analyses within this report serve to confirm or deny knowledge that has spread through word of mouth about which place is the 'best to live', 'has no white people', or is 'hella White', and to provide possible explanations for why this is.
 
-Essentially, we are giving non-locals a 'lay of the land' of what the income distribution and racial distribution of Seattle looks like, something that would be hard to learn unless you have local connections.
+Essentially, we are giving non-locals a **'lay of the land'** of what the income distribution and racial distribution of Seattle looks like, **something that would be hard to learn unless you have local connections**.
 
-The value of visualizations like this are increasingly more important in light of the rise of COVID-19 and the demonstrated ways that it has exacerbated inequities around the nation. Policymakers, public health officials, and other public servants must be well-informed of the communities they serve, including knowing exactly where their most at-risk constituents reside.
+The value of visualizations like this are increasingly more important in light of the rise of COVID-19 and the demonstrated ways that it has exacerbated inequities around the nation. Policymakers, public health officials, and other **public servants must be well-informed of the communities they serve**, including knowing exactly where their most at-risk constituents reside.
 
 The findings from our report would be most relevant for those who...
 
@@ -66,7 +66,7 @@ knitr::include_graphics(c("https://content.lib.washington.edu/imls/kcsnapshots/i
                           "https://content.lib.washington.edu/imls/kcsnapshots/images/kc-map.gif"))
 ``` 
 
-It is important to keep in mind that while Seattle is a major tech-hub and important part of Washington's economy, in the grand scheme of all-Washington things Seattle is very small.
+It is important to keep in mind that while Seattle is a major tech-hub and important part of Washington's economy, **in the grand scheme of all-Washington things Seattle is very small**.
 
 ### ii. What does Seattle look like?
 ```{r, echo=FALSE,out.width="49%",out.height="20%",fig.cap="A map of Seattle side-by-side with a 'judgemental' map sourced by opinions from Seattleites. ",fig.show='hold',fig.align='center'}
@@ -75,31 +75,44 @@ knitr::include_graphics(c("https://amekorealty.com/wp-content/uploads/2019/05/Se
                           "https://external-preview.redd.it/RHtD1UfHwbt-oZJ_5ttvcz9StulzhOWGE_AZvYhDjWU.jpg?auto=webp&s=8108bfe8054b805ae3323422b93a63aeb7f10cad"))
 ``` 
 
-In the map above, we can see that Seattle is divided up into a few arbitrary areas. Throughout this report, when we say North Seattle, we won't mean it necessarily in the sense that is demonstrated in the figure above, but in a more simple sense to establish a dichotomy: North Seattle represents the area above the center of Seattle, and South Seattle represents the area below the center of Seattle.
+In the map above, we can see that Seattle is divided up into a few arbitrary areas. **Throughout this report, when we say North Seattle, we won't mean it necessarily in the sense that is demonstrated in the figure above, but in a more simple sense to establish a dichotomy**: North Seattle represents the area above the center of Seattle, and South Seattle represents the area below the center of Seattle.
 
-In addition, here is Dominick's attempt to summarize local opinion on the different Seattle areas, utilizing the areas in the figure on the left for reference.
+In addition, here is Dominick's attempt to summarize local opinion on the different Seattle areas, utilizing the areas in the figure on the left for reference:
 
-- The northern area of West Seattle and area along the waterfront of West Seattle is known to have relatively higher  
+- The northern area of West Seattle and area along the waterfront of West Seattle is known to have relatively **higher incomes**.
+- The southern areas of West Seattle is an **industrial area with low-income communities of color**.
+- Southeast Seattle is primarily a residential area that also has **many different communities of color with lots of different restaurants and businesses**.
+- Central Seattle is known for a **lively night life**, and is primarily White. One neighborhood in Central Seattle is the **'Central District', a historically black neighborhood that has since been gentrified**.
+- Downtown is where there are huge skyscrapers, the Space Needle, sports arenas, and more. **There are high-income individuals in condos and apartments living adjacent to a huge homeless population.**
+- North Seattle is **home to the University of Washington and is known to be a 'white area'.**
 
 ### iii. What is low-income in Seattle?
 
 Our report will be analyzing income inequality, therefore it is important that there is an understanding of what low-income looks like in Seattle, as economies can vary greatly from city to city throughout America.
 
-Shockingly, families of 5 in Seattle with a household income under $102,900 are considered to be low-income, as based on eligibility for low-income [public housing](https://www.seattlehousing.org/housing/sha-housing/eligibility/income-level-low-income-public-housing).
+Shockingly, **families of 5 in Seattle with a household income under $102,900 are considered to be low-income**, as based on eligibility for low-income [public housing](https://www.seattlehousing.org/housing/sha-housing/eligibility/income-level-low-income-public-housing).
 
 However, low-income in this sense may be too strict as it is a blanket classification based on data from the entire Seattle area. This information is useful nonetheless due to its ability to be compared to the eligibility of low-income public housing in other cities throughout the nation.
 
 From a more practical local perspective, having an income below $102,900 would only be considered low-income if you wanted to live in North Seattle. 
 
-Trying to make it with an income less than this amount in Seattle is easy with just one crazy trick: 'lower your standards' and move south! This is an unfortunate fact of life in Seattle that has led to a lot of the de facto segregation and income inequality we will see throughout this report.
+**Trying to make it with an income less than this amount in Seattle is easy with just one crazy trick: 'lower your standards' and move south!** This is an unfortunate fact of life in Seattle that has led to a lot of the de facto segregation and income inequality we will see throughout this report.
 
 ### iv. Navigating our visualizations
 
-Throughout our visualizations, we have utilized markers in different ways to indicate points of analysis. Clicking on a marker will activate a pop-up bubble including important information about the area around the marker and important things to watch out for.
+Throughout our visualizations, we have utilized markers in different ways to indicate points of analysis. **Clicking on a marker will activate a pop-up bubble including important information about the area around the marker and important things to watch out for.**
 
 The meat of our report lies within the analyses embedded within these markers (due to our analyses reliance on spatial visualization), while larger overviews will be provided in written form adjacent to the visualization.
 
-We hope that you will be able to take the time to peruse our report and learn more about Seattle's rich diversity that is not typically highlighted in popular media. There are also some 'fun markers' with facts that may be interesting for those interesting in moving to Seattle or just learning about Seattle.
+**We hope that you will be able to take the time to peruse our report and learn more about Seattle's rich diversity that is not typically highlighted in popular media.** There are also some 'fun markers' with facts that may be interesting for those interesting in moving to Seattle or just learning about Seattle.
+
+### v. Source of Data
+
+Our data was obtained from the **[American Community Survey (ACS)](https://www.census.gov/programs-surveys/acs)** of the Census Bureau, through the R package **tidycensus** by Kyle Walker.
+
+While the census is taken every decade, the ACS is conducted every month on a random sample of households (1 in 38), with ACS results released every year once enough data is gathered.
+
+**If you are selected for the ACS, you will be mailed a survey and you are required by law to take the ACS**. Failure to complete the survey means that you will be called through phone to do the survey. Otherwise, ACS sends representatives to knock on doors for an interview of randomly selected individuals who failed to take the survey through both mail and phone.
 
 ```{r, warning=FALSE}
 # wrapper function to get ACS data more easily
@@ -140,7 +153,6 @@ educ_var <- "B16010_041"
 educ_2018 <- get_wa_data(educ_var, 2018)
 ```
 
-
 ## III. Income Inequality Over the Past Decade
 
 ### i. Income Inequality Over Time in King County 
@@ -154,11 +166,11 @@ ggplot(income_inequality, aes(x=Date, y=Ratio)) +
   theme(panel.background = element_rect(fill = 'lavender'))
 ```
 
-By looking into the ratio of the mean income for the highest quintile (top 20 percent) of earners divided by the mean income of the lowest quintile (bottom 20 percent) of earners in King's county we can get an idea of income inequality over time. Here we can see that income inequality has sharply risen from 2010 to 2014 and leveled off since then. (Data is based on multiyear "period" estimates derived from the American Community Survey (ACS) data sample collected over time)
+By looking into the ratio of the mean income for the highest quintile (top 20 percent) of earners divided by the mean income of the lowest quintile (bottom 20 percent) of earners in King's county we can get an idea of income inequality over time. Here we can see that **income inequality has sharply risen from 2010 to 2014 and leveled off since then**. (Data is based on multiyear "period" estimates derived from the American Community Survey (ACS) data sample collected over time)
 
-This visualization is just one of many that have been created about Seattle to demonstrate its inequities. It is a proven fact that Seattle has inequities, and the purpose of this report is not to contribute to this established body of knowledge, but to provide a different perspective.
+This visualization is just one of many that have been created about Seattle to demonstrate its inequities. It is a proven fact that Seattle has inequities, and the purpose of this report is **not to contribute to this established body of knowledge, but to provide a different perspective**.
 
-The goal of the visualizations in the following parts of this report is to provide a more intuitive spatial understanding of these inequities. It is one thing to 'know' that inequities exist through numbers and graphs, but seeing inequities can have a much larger impact on an individual in understanding this issue.
+The goal of the visualizations in the following parts of this report is to provide a more intuitive spatial understanding of these inequities. **It is one thing to 'know' that inequities exist through numbers and graphs, but seeing inequities is different** and can have a much larger impact on an individual in understanding this issue.
 
 
 ### ii. Spatial Distribution of Median Income over 2009-2018
@@ -203,12 +215,14 @@ incomeMap <- function(income_df, year){
 ```
 
 ```{r}
-name <- c("West Seattle", "Ballard (Census Tract 47)", "New Holly (Census Tract 110)")
-lat <- c(47.552859, 47.669687, 47.540959)
-long <- c(-122.375815, -122.371567, -122.295484)
+name <- c("West Seattle", "Ballard (Census Tract 47)", "New Holly (Census Tract 110)", "Mercer Island", "University of Washington Campus")
+lat <- c(47.552859, 47.669687, 47.540959, 47.558568, 47.655115)
+long <- c(-122.375815, -122.371567, -122.295484, -122.221523, -122.306481)
 description <- c("West Seattle is an interesting place for watching income inequality. This small area grows distinct lines of income inequality within just a short ten-year span. This is most likely due to the special case of being close to the waterfront.",
                  "This area in the Ballard neighborhood undergoes a lot of growth, from a median income of $52652 to a median income of $91288, a growth of about $40k. This income growth behavior is representative of many of the other tracts in North Seattle. This is in heavy contrast to the income growth behavior of South Seattle.",
-                 "This area in the New Holly neighborhood goes through very little growth, from a median income of $38,909 to $53,300, a growth of about $15k. This slow growth of income can be seen in other areas of South Seattle, in contrast to the large growth of income in North Seattle, an indicator of income inequality in action.")
+                 "This area in the New Holly neighborhood goes through very little growth, from a median income of $38,909 to $53,300, a growth of about $15k. This slow growth of income can be seen in other areas of South Seattle, in contrast to the large growth of income in North Seattle, an indicator of income inequality in action.",
+                 "Mercer Island is known to be a highly affluential area as evident by the high levels of income around this marker.",
+                 "The University of Washington is a huge player in the Seattle area, due to its sheer size, research, and economic force. </br></br> The University of Washington campus is huge, spanning 703 acres. For comparison, Carnegie Mellon University has an acreage of 140 acres while Disneyland has an acreage of 510 acres.")
 landmarks <- data.frame(name, lat, long, description)
 ```
 
@@ -234,15 +248,15 @@ incomeMap(income_2018, "2018") %>%
 
   From this visualization we can see jarring effects where for example one area would experience a growth of only $15k/yr in median income over 10 years, while another area would experience a growth of about \$40k/yr. Or another case where an area had relatively uniform income levels, but in just a decade, there was a tract with a \$40k difference over a single border line (~60k vs ~100k). 
   
-  This has led to what we see now today where North Seattle generally has higher incomes and South Seattle has lower incomes. We tried looking into potential reasons for what may have caused these findings.
+  This has led to what we see now today where **North Seattle generally has higher incomes and South Seattle has lower incomes**. We tried looking into potential reasons for what may have caused these findings.
   
   One potential contributor is Seattle's recent tech boom and the resulting economic growth from it. Seattle is home to the headquarters of Amazon and Microsoft, and offices of many other big tech companies are located in Seattle also, such as Google, Tableau, and Valve.
   
-  This has caused a lot of high income white-collar tech workers (who are primarily White) making anywhere from \$120,000 to \$300,000 a year to move into the Seattle area, creating a larger demographic of high tech-workers that might not have been present before. This increasing presence of a large-income demographic next to those in the lower class who are not able to benefit from such growth could contribute to this income inequality gap.
+  This has caused a lot of high income white-collar tech workers (who are primarily White) making anywhere from \$120,000 to \$300,000 a year to move into the Seattle area, creating a larger demographic of high tech-workers that might not have been present before. **This increasingly large presence of a high-income demographic next to those in the lower class who are not able to benefit from such growth could be contributing to this income inequality gap.**
   
 ## IV. Spatial Distribution of Racial Groups
 
-We've demonstrated that Seattle has income inequality issues, but what about racial inequalities? We have provided markers for important locations in the Seattle area, with different analyses for each group. There is a lot of information to take in!
+**We've demonstrated that Seattle has income inequality issues, but what about racial inequalities?** We have provided markers for important locations in the Seattle area, with different analyses for each group. There is a lot of information to take in!
 
 As you dive deep into each marker location and explore our visualization, keep these questions in mind:
 
@@ -290,7 +304,11 @@ raceMap <- function(race_var, year, racial_group, binning, latitude = 47.600315,
 
 ### i. Whites
 
-White people most definitely live primarily in North Seattle and in expensive waterfront areas
+A significant finding is that **Whites primarily live in all of the high income areas** that were highlighted in the 2018 map of income in section III.
+
+Whites are primarily located in North Seattle, waterfront areas of West Seattle, and the affluential residential area of Mercer Island.
+
+Whites are **not** located in South Seattle areas such as New Holly where there was little growth in income.
 
 #### a. Distribution of Whites, 2018
 ```{r, warning=FALSE}
@@ -320,7 +338,7 @@ raceMap(white_var, 2018, "Whites",
 
 ### ii. Blacks
 
-This map was a drastic difference compared to the map for Whites; Blacks were almost strictly located in the places that Whites were not.
+Shockingly, or perhaps not, this map shows that Blacks are primarily where Whites are not. **Generally, anywhere where Blacks are, Whites are not.**
 
 #### a. Distribution of Blacks, 2018
 ```{r, warning=FALSE}
@@ -353,16 +371,16 @@ raceMap(black_var, 2018, "Blacks",
 
 ### iii. Asians
 
-We can see that Asians have similar distributions to Blacks, demonstrating that people of color tend to live near other people of color in the Seattle area.
+We can see that Asians have similar distributions to Blacks, demonstrating that **people of color tend to live near other people of color** in the Seattle area.
 
-However, it is important to take note of a major difference in the downtown Seattle area!
+However, there are important differences such as in Downtown Seattle and Mercer Island.
 
 #### a. Distribution of Asians, 2018
 ```{r, warning=FALSE}
 
-name <- c("Geographical center of Seattle", "Mercer Island", "West Seattle", "Beacon Hill", "Rainier Valley", "Dominick's House", "Northern Border of Seattle", "Southern Border of Seattle", "North Seattle", "White Center")
-lat <- c(47.601216, 47.558568, 47.548684, 47.577065, 47.520874, 47.516997, 47.734079, 47.499237, 47.671000, 47.512614)
-long <- c(-122.327752, -122.221523, -122.395931, -122.310609,-122.272296, -122.283015, -122.334456, -122.264753, -122.359690, -122.361942)
+name <- c("Geographical center of Seattle", "Mercer Island", "West Seattle", "Beacon Hill", "Rainier Valley", "Dominick's House", "Northern Border of Seattle", "Southern Border of Seattle", "North Seattle", "White Center", "University of Washington Campus")
+lat <- c(47.601216, 47.558568, 47.548684, 47.577065, 47.520874, 47.516997, 47.734079, 47.499237, 47.671000, 47.512614, 47.655115)
+long <- c(-122.327752, -122.221523, -122.395931, -122.310609,-122.272296, -122.283015, -122.334456, -122.264753, -122.359690, -122.361942, -122.306481)
 description <- c("Everything that Seattle is known for in media is located above this area, with downtown Seattle being just north of here.
                  </br></br> We see in downtown Seattle above this major one of the major differences between Asians and Blacks, where Asians are heavily located in this area unlike how Blacks are. A major explanation for this is due to the high number of East and South Asian white collar tech workers living in apartments in the downtown area.",
                  "An affluential, mostly residential area. The median income for Mercer Island is around $200,000. </br></br> Note that there are a significantly larger number of Asians in this area compared to Blacks. This could be due to a lot of reasons. A potential cause is the presence of a large number of affluential East Asians in the Seattle area.",
@@ -378,40 +396,33 @@ description <- c("Everything that Seattle is known for in media is located above
                  </br></br> It is important to look at the area below this marker! Like Blacks, there are not many Asians in Seattle due to them being pushed into the lower priced southern regions: south Seattle and south of Seattle.",
                  "The entire area between the center of Seattle (marker directly below) and the northern border of Seattle (marker directly above) is COMPLETELY DARK. A complete contrast from the area between the center of Seattle and the southern border of Seattle.",
                  "Nicknamed 'Rat City', White Center is an unincorporated Seattle area with a tight-knit diverse community that is unfortunately severely underfunded compared to actual Seattle areas, bringing meaning to the unofficial motto: 'White Center - not so white, not so centered'.
-                 </br><a href=\"https://www.seattletimes.com/pacific-nw-magazine/as-prices-push-people-out-of-seattle-white-center-celebrates-community-and-diversity/\" target=\"_blank\">Click link to learn more.</a>")
+                 </br><a href=\"https://www.seattletimes.com/pacific-nw-magazine/as-prices-push-people-out-of-seattle-white-center-celebrates-community-and-diversity/\" target=\"_blank\">Click link to learn more.</a>",
+                 "University of Washington has a lot of East Asian international students that move to on-campus housing, apartments, or houses in the nearby area.")
 landmarks <- data.frame(name, lat, long, description)
 raceMap(asian_var, 2018, "Asians",
         c(0, 750, 1500, 2250, 3000, 3750, 4500)) %>%
   marker(landmarks)
 ```
 
-### iv. Native Americans
+### iv. Conclusions
 
-(LEAFLET MARKER) Native Americans live around Duwamish River. An explanation for this is the presence of the Duwamish Tribe.
+These visualizations demonstrate that there is a pattern between income lines in Seattle and racial lines. **Whites were primarily located in areas where Blacks and Asians weren't.**
 
-#### a. Distribution of Native Americans, 2018
-```{r, warning=FALSE}
-raceMap(native_american_var, 2018, "Native Americans",
-        c(0, 25, 50, 75, 100, 125, 150, 175, 200))
-```
+There are **critical limitations** of the visualizations above that we must highlight. The data is based on response to race, which means that specific ethnic groups such as Latinos and Asian subgroups did not have their story told.
 
-### vi. Conclusions
+These limitations led us to these questions:
 
-There are important limitations of the visualizations above that we must highlight.
-
-These racial data visualizations were not able to highlight the unique experiences of certain ethnic groups such as Latinos and Asian subgroups. 
-
-There are health disparities, language needs, and educational disparities that can be remedied through targeting these specific groups.
-
-Here are a couple questions the visualizations above brought to mind:
-
-- Who 
+- Where do Latinos live?
+- What patterns can we see within the disaggregated data for Asians that we cannot see for racial data?
 
 ## V. Spatial Distribution of Ethnic Groups
 
-We decided to track these subgroups utilizing the language spoken at home, which are major indicators of ethnicity.
+**We gathered disaggregated ethnic data from the American Community Survey by looking at responses to the question on the 'Language Spoken at Home' by respondents.** (e.g. those who responded that they spoke Spanish at home will represent Hispanics/Latinos)
 
-We used data from 2014 due to difficulties getting language data from 2018. (TODO: WHY?)
+An obvious limitation that we knew before diving into the data was that **not all ethnicities would speak their respective language at home.** For example, not all Latinos would speak Spanish at home due to assimilation. We also discovered more limitations as we went into the data.
+
+Another limitation is that unfortunately, **we were not able to gather consistent data from a more recent year such as 2018**. We have not been able to determine why that is.
+
 ```{r, warning=FALSE}
 # Variables for Languages Spoken at Home
 total_lang_var <- "B16001_001"
@@ -453,9 +464,9 @@ get_lang_map <- function(lang_var, ethnic_group, year, binning) {
 
 ### i. Hispanics
 
-Hispanics tend to be living in the unincorporated areas south of Seattle that tend to be more underresourced than those living in the southern skirts of Seattle.
+From this visualization we can see that **Hispanics tend to be living in the unincorporated areas south of Seattle (White Center) that tend to be more underresourced.**
 
-By zooming out, you can see a marker in eastern Washington. Another important thing to note is that there are much larger populations of Latinos in Eastern Washington, where the costs of living are much cheaper. Latinos also make-up the majority of the workforce in Washington's booming agriculture industry, to which Eastern Washington is home to.
+By zooming out, you can also see a marker in Eastern Washington where **Latinos make up a large proportion of the dominant agriculture industry of Eastern Washington.**
 
 #### a. Distribution of Hispanics, 2014
 ```{r, warning=FALSE}
@@ -476,59 +487,85 @@ get_lang_map(spanish_var, "Hispanics", 2014,
   marker(landmarks)
 ```
 
-### ii. Cambodians
-We discovered another limitation to our data visualizations. The data did not accurately reflect the population of Khmer individuals in the Seattle area. This is dangerous as individuals who are not familiar with the Khmer community in Seattle may take this data to be more accurate than it is in reality.
+### ii. Vietnamese
 
-In this visualization, we can see that there are virtually no Khmer individuals in South Seattle (LEAFLET MARKER), when in actuality, there are numerous Khmer communities, temples, and youth groups. (LEAFLET MARKER) We can also see that there are lots of Khmer individuals in Bellevue, one of Seattle's sister cities and a high income city. One could interpret this to mean that the Khmer population in Seattle is a small, but affluential population, when it is far from that.
+This data visualization of the distribution of Vietnamese is **very similar** to the data visualization of "Asians" in the previous section. One large difference is that although there are a lot of overlaps between the two graphs, the Vietnamese people are primarily located in the low-income areas of Seattle. **The high-income areas that Asians were shown to be located in, such as Mercer Island and Downtown Seattle, does not appear in this graph.**
 
-The Khmer population are refugees who escaped a genocide in Cambodia about 40 years ago. Most of them live in South Seattle, with limited English ability and typically low levels of education due to the fact that most education folks in Cambodia were executed.
-
-(MARKER) White Center shows that there are an estimated 0 Khmer individuals in the area, which directly contradicts the presence of Cambodian supermarkets, restaurants, and temples.
-
-An explanation for this severe undercounting can be explained through the American Community Survey (ACS), which this data is sourced from. Although it is required to take the ACS, an illiteracy in English and a fear of deportation are significant reasons that Khmer individuals would fail to take the ACS survey mailed to them.
-
-This highlights that there are important accessibility measures that must be taken by ACS to remedy this issue. It also highlights the importance of community outreach and education, to which there has been a huge movement in the Khmer community recently, as many youth are advocating their older generations of the trustworthiness of the survey and its inability to affect immigration issues.
-
-#### a. Distribution of Cambodians, 2014
-```{r, warning=FALSE}
-get_lang_map(khmer_var, "Cambodians", 2014, 
-             c(0, 50, 100, 150, 200))
-```
-
-### iii. Vietnamese
-
-i will do this later or take it out
+This demonstrates the power of disaggregated data and the commonly stated fact that Asians not a monolithic entity. This visualization shows that **while Asians live in both high and low-income areas, Vietnamese primarily live in the low-income areas.**
 
 #### a. Distribution of Vietnamese, 2014
 ```{r, warning=FALSE}
+name <- c("White Center", "Rainier Beach", "Skyway")
+lat <- c(47.507977, 47.525109, 47.498402)
+long <- c(-122.336095, -122.268991, -122.256939)
+description <- c("Nicknamed 'Rat City', White Center is an unincorporated Seattle area known for its tight community and vast diversity.
+                 </br><a href=\"https://www.seattletimes.com/pacific-nw-magazine/as-prices-push-people-out-of-seattle-white-center-celebrates-community-and-diversity/\" target=\"_blank\">Click link to learn more.</a>",
+                "Rainier Beach has bad connotations with many in Seattle, marking it as 'the hood', located on the southern border of Seattle. Historically known for its low property values, the presence of the light rail has slowly been increasing property values, threatening many residents with the inevitability of gentrification that has already impacted northern areas of Seattle.
+</br><a href=\"https://www.seattleglobalist.com/2014/07/03/crime-rainier-beach-safety-seattle/27281\" target=\"_blank\">  Click link to learn more.</a> </br><a href=\"https://southseattleemerald.com/2017/12/27/brad-and-becky-from-bellevue-are-coming-to-rainier-beach/\" target=\"_blank\">  Another link about gentrification.</a>",
+"Skyway is an unincorporated Seattle area, a community considered to be a food desert with a lack of health clinics.
+</br><a href=\"https://www.theurbanist.org/2017/05/03/meet-skyway-seattles-unincorporated-neighbor-south/\" target=\"_blank\"> Click link to learn more.</a>")
+landmarks <- data.frame(name, lat, long, description)
 get_lang_map(vietnamese_var, "Vietnamese", 2014, 
-             c(0, 50, 100, 150, 200))
+             c(0, 50, 100, 150, 200)) %>%
+  marker(landmarks)
+```
+
+
+### iii. Cambodians
+
+**The Khmer people, also known as Cambodians**, are the ethnic group of Cambodia and they speak the Khmer language. They primarily migrated to Seattle in the 1970s and 1980s after the end of the Cambodian genocide.
+
+In this visualization, we can see that there are not many Cambodians in the Seattle area, with a lone hotspot in South Seattle.
+
+However, there is a large hotspot of Cambodians in Bellevue, the sister city of Seattle, that has high-incomes. **One could interpret this to mean that the Khmer population in Seattle is a small, but affluential population. This is far from reality**.
+
+White Center in the area south of Seattle shows that there are essentially 0 Khmer individuals in the area. **This is completely inaccurate** as there is a large and lively community of Cambodians which is evident through the presence of Cambodian supermarkets, restaurants, and temples.
+
+#### a. Distribution of Cambodians, 2014
+```{r, warning=FALSE}
+name <- c("White Center", "Rainier Beach", "Skyway", "Bellevue")
+lat <- c(47.507977, 47.525109, 47.498402, 47.613663)
+long <- c(-122.336095, -122.268991, -122.256939, -122.140141)
+description <- c("Nicknamed 'Rat City', White Center is an unincorporated Seattle area known for its tight community and vast diversity.
+</br></br> White Center is home to an annual Cambodian new year festival, Cambodian marketplaces, restaurants and more. However, The data estimates that there are virtually 0 Cambodians in this area.",
+                "Rainier Beach has bad connotations with many in Seattle, marking it as 'the hood', located on the southern border of Seattle. Historically known for its low property values, the presence of the light rail has slowly been increasing property values, threatening many residents with the inevitability of gentrification that has already impacted northern areas of Seattle.
+</br><a href=\"https://www.seattleglobalist.com/2014/07/03/crime-rainier-beach-safety-seattle/27281\" target=\"_blank\">  Click link to learn more.</a> </br><a href=\"https://southseattleemerald.com/2017/12/27/brad-and-becky-from-bellevue-are-coming-to-rainier-beach/\" target=\"_blank\">  Another link about gentrification.</a>",
+"Skyway is an unincorporated Seattle area, a community considered to be a food desert with a lack of health clinics.
+</br><a href=\"https://www.theurbanist.org/2017/05/03/meet-skyway-seattles-unincorporated-neighbor-south/\" target=\"_blank\"> Click link to learn more.</a>",
+"Bellevue is an affluential population that has a relatively large amount of Khmer individuals compared to other areas in this visualization. This is likely to due accessibility issues. 
+</br></br> The small percentage of Khmer individuals who are educated are living in Bellevue and most likely to respond to the ACS survey, while the illiterate Khmer in poorer areas would be less likely to respond.")
+landmarks <- data.frame(name, lat, long, description)
+get_lang_map(khmer_var, "Cambodians", 2014, 
+             c(0, 50, 100, 150, 200)) %>%
+  marker(landmarks)
 ```
 
 ### iv. Conclusions
 
-Must fill this part out eventually.
+This section demonstrates the importance of disaggregated data. We were **able to see a different story for Latinos, Vietnamese, and Cambodians that we were not able to see in the racial data**. 
+
+This disaggregated data also brought a lot of limitations. We were not able to gather recent data for some reason and there was likely undercounting for all three groups due to language not being a reliable metric for ethnicity.
+
+The group with the most obvious undercounting was the Cambodians, to which the data visualization depicted as a sparse group with a hotspot in Bellevue a high-income location. **Which is essentially the opposite in reality.** Instead, the Khmer population has a dense population in areas such as White Center that are not being counted correctly. This could be an accessibility issue, as the majority of the Khmer population in America **come from an uneducated background (as those who were educated were killed in Cambodia) who are illiterate in English**, which could lead to failure to complete ACS surveys despite the safety nets in place by the Census Bureau. The hotspots of Khmer individuals in Bellevue likely represent a 'vocal minority' of the Khmer families who are educated, literate, and more likely to respond to ACS surveys.
+
+This highlights that there are **important accessibility measures that must be taken by ACS to remedy this issue**. It also highlights the importance of community outreach and education, to which there has been a huge movement in the Khmer community recently, **as many youth are advocating to their older generations about the trustworthiness of the survey and its inability to affect immigration status**.
 
 ## VI. Limitations
 
 While this report has a lot of useful visualizations that can be used for a variety of important applications, it is important to note some notable limitations.
 
-As evidenced by the case study on Cambodians in Seattle, the data used in this study is not an accurate representation of all groups in Seattle. Data visualizations like these cannot be trusted unless you are able to get community input that will provide useful insight that cannot be seen through the numbers.
+As evidenced by the case study on Cambodians in Seattle, the data used in this study is **not a completely accurate representation of all groups in Seattle**. Data visualizations like these cannot be trusted unless you are able to get community input that will provide useful insight that cannot be seen through the numbers.
 
-Therefore, we must admit that we have not been able to get input from all the communities in this study. Dominick has significant connections with the Cambodian and Vietnamese community so therefore he has been able to provide those populations an accurate representation.
+Therefore, we must admit that **we have not been able to get input from all the communities in this study**. Dominick has significant connections with the Cambodian and Vietnamese community so therefore he has been able to provide those populations an accurate representation. Other groups in this study have not been given the same treatment, therefore these results must not be taken as truth, but as an indicator.
 
-Other groups in this study have not been given the same treatment, therefore these results must not be taken as truth, but as an indicator.
-
-In addition, this report was completed in a relatively short amount of time which means that again, our results cannot be taken as an absolute truth due to our crude analysis.
-
-Future iterations of this project would need more community input and a more detailed analysis of the experiences of all groups in the large area that is Seattle.
+In addition, this report was completed in a **relatively short amount of time** which means that again, **our results cannot be taken as an absolute truth due to our crude analysis**. Future iterations of this project would need more community input and a more detailed analysis of the experiences of all groups in the large area that is Seattle.
 
 ## VII. Final Implications
 
-Spatial visualizations like these are vital for public servants to do their job in an equitable manner. Our visualizations indicate that there are issues, and if these visualizations become fully developed, they could have major impacts in our world.
+**Spatial visualizations like these are vital for public servants to do their job in an equitable manner**. Our visualizations indicate that there are issues, and that our visualizations could have major impacts on policy decisions if fully developed.
 
-On July 31st 2020, just last week (at the time of publication), a [free COVID-19 testing site](https://www.seattletimes.com/seattle-news/health/seattle-to-open-another-free-coronavirus-testing-location-to-reach-more-bipoc/) was announced to open in the Rainier Beach neighborhood of South Seattle due to the high populations of Black, Latino, and other populations of color that are disproportionately impacted by the pandemic. This was a vital policy decision that was informed by data analyses like ours. Without data available like this, policy decisions would be made 'blind' and be a much more ineffective process leaving many communites of color susceptible to institutional neglect.
+On July 31st 2020, just last week (at the time of publication), a [free COVID-19 testing site](https://www.seattletimes.com/seattle-news/health/seattle-to-open-another-free-coronavirus-testing-location-to-reach-more-bipoc/) was announced to open in the Rainier Beach neighborhood of South Seattle due to the high populations of Black, Latino, and other populations of color that are disproportionately impacted by the pandemic. This was a vital policy decision that was informed by data analyses like ours. **Without data available like this, policy decisions would be made 'blind' and be a much more ineffective process leaving many communites of color susceptible to institutional neglect.**
 
-This data analyses can be applied to areas besides health care, such as education. Seattle has large populations of non-native English speakers that require special resources in language education. By knowing where these non-native English speakers live, resources can be more effectively distributed to these populations in order to utiize district funds more efficiently, while also uplifting students of color. Education is one of many fields where this data could be used to inform policy decisions for social and economic good, such as immigration reform, drug abuse intervention and prevention, and housing discrimination.
+This data analyses can be applied to areas besides health care, such as education. Seattle has large populations of non-native English speakers that require special resources in language education. By knowing where these non-native English speakers live, resources can be more effectively distributed to these populations in order to utiize district funds more efficiently, while also uplifting students of color. **Education is one of many fields where this data could be used to inform policy decisions for social and economic good, such as immigration reform, drug abuse intervention and prevention, and housing discrimination.**
 
-Lastly, these issues are vital tools in the fight against the racial pandemic in America. The Black Lives Matter movement has experienced a rapid gain in traction from many companies, demographics, and communities that had previously not supported the movement, which is vital to having change being enacted. Unfortunately, there are still large swathes of individuals who do not support BLM due to a variety of reasons, which a major reason being a lack of consciousness in the racial inequities that plague our country. There are individuals who may say that they 'know' there are racial inequities, but do not feel it is a big enough problem to justify the movement. Data visualizations like these are powerful tools to raise the racial consciousness of individuals within our society. It is hard to look at these harsh disparities face-to-face and sincerely believe that this is not an issue worth fighting for.
+Lastly, **these visualizations are vital tools in the fight against the racial pandemic in America**. The Black Lives Matter movement has experienced a rapid gain in traction from many companies, demographics, and communities that had previously not supported the movement, which is vital to having change being enacted. Unfortunately, there are still large swathes of individuals who do not support BLM due to a variety of reasons, which a major reason being a lack of consciousness in the racial inequities that plague our country. There are individuals who may say that they 'know' there are racial inequities, but do not feel it is a big enough problem to justify the movement. **Data visualizations like these are powerful tools to raise the racial consciousness of individuals within our society**. It is hard to look at these harsh disparities face-to-face and sincerely believe that this is not an issue worth fighting for.
