@@ -144,7 +144,7 @@ educ_2018 <- get_wa_data(educ_var, 2018)
 ## III. Income Inequality Over the Past Decade
 
 ### i. Income Inequality Over Time in King County 
-```{r, fig.height=4, fig.width=5, warning=FALSE}
+```{r, fig.height=4, fig.width=5, warning=FALSE, fig.align='center'}
 income_inequality <- read_csv("2020RATIO053033.csv")
 income_inequality <- income_inequality %>%
  rename(Date=DATE, Ratio='2020RATIO053033')
