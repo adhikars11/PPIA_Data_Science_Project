@@ -34,20 +34,17 @@ census_api_key('5714ee4a8992db912a5256472fdf0fef5de96f64', install = TRUE, overw
 
 ## I. Introduction and Purpose of the Project
 
-The inspiration behind this project began with interests in learning more about income inequality, gentrification, and segregation of the community that Dominick grew up in.
+The visualizations and analyses in this project are the proud product of Shisham's expertise in R and economics, Dominick's background knowledge in Seattle's history of segregation and inequality, and our shared interest in utilizing data science for social good. The inspiration began with interests in learning more about income inequality, gentrification, and segregation of the community that Dominick grew up in.
 
-A 'fact of life' that Dominick had discovered at a young age was that North Seattle is where wealthy white people live, while South Seattle is where everyone else lived; living further South directly correlated with lower income. However, he had never seen this phenomenon mapped out. It is relatively well-known by those who live here that Seattle is segregated, and there have been articles about segregation in Seattle, but there has never been a visualization of this segregation. The visualizations and analyses in this project are the product of Shisham's expertise in R and economics, Dominick's background knowledge in Seattle's history of segregation and inequality, and our shared interest in utilizing data science for social good.
+Dominick had always been told since a young age that North Seattle was for 'white people' and South Seattle is where everyone else lived. In Seattle, being south meant being low income.
 
-The presence of a visualization would allow us to provide the important service of 
-fact checking this knowledge that has spread through word of month. The presence of a visualization would also give newcomers to Seattle a 'lay of the land' of what the income distribution and racial distribution of Seattle looks like, something that would be hard to learn unless you have local connections. The value of visualizations 
-like this are increasingly more important in light of the rise of COVID-19 
-and the demonstrated ways that it has exacerbated inequities around the nation. 
-Policymakers, public health officials, and other public servants must be well-informed of the communities they serve, including knowing exactly where their most at-risk constituents reside.
+Numerous articles have clearly demonstrated through lots of data analysis that there is clear income inequality and de facto racial segregation, but there has never been a clear visual to provide a spatial understanding of this phenomenon.
 
-This report will provide an overview of recent events that have impacted income
-inequality, gentrification, and racial inequity in Seattle, such as the 
-2008 economic crisis, Seattle's tech boom, and deployment of the Link light rail
-public transportation system in 2009.
+The visualizations and analyses within this report serve to confirm or deny knowledge that has spread through word of mouth about which place is the 'best to live', 'has no white people', or is 'hella White', and to provide possible explanations for why this is.
+
+Essentially, we are giving non-locals a 'lay of the land' of what the income distribution and racial distribution of Seattle looks like, something that would be hard to learn unless you have local connections.
+
+The value of visualizations like this are increasingly more important in light of the rise of COVID-19 and the demonstrated ways that it has exacerbated inequities around the nation. Policymakers, public health officials, and other public servants must be well-informed of the communities they serve, including knowing exactly where their most at-risk constituents reside.
 
 The findings from our report would be most relevant for those who...
 
@@ -60,48 +57,39 @@ The findings from our report would be most relevant for those who...
 
 ## II. Navigating this Report
 
-This section serves to provide important context for the Seattle area so that those unacquainted with the area will be able to navigate our spatial maps better. This also serves to provide information on how to get the most out of this report.
+The following short sections will provide important information needed to fully reap the benefits of this report.
 
-<!-- #### A map of Washington State showing different counties -->
-<!-- ```{r,fig.height=3,fig.width=4, warning=FALSE} -->
-<!-- library(magick) -->
-<!-- library(rsvg) -->
-<!-- WA <- image_read("https://content.lib.washington.edu/imls/kcsnapshots/images/wa-state-map.gif") -->
-<!-- print(WA) -->
-<!-- ``` -->
-
-<!-- #### A map of King County showing different cities in it -->
-<!-- ```{r,fig.height=3, fig.width=2.5, warning=FALSE} -->
-<!-- King <- image_read("https://content.lib.washington.edu/imls/kcsnapshots/images/kc-map.gif") -->
-<!-- print(King) -->
-<!-- ``` -->
-
-#### i. Where is Seattle?
-```{r, echo=FALSE,out.width="49%",out.height="20%",fig.cap="Seattle is a VERY small part of a much bigger system in the Washington area, as demonstrated by the county-maps (left) and the map of King County where Seattle resides (right) ",fig.show='hold',fig.align='center'}
+### i. Where is Seattle?
+```{r, echo=FALSE,out.width="49%",out.height="20%",fig.cap="All counties in Washington (left) and a map of King County (right), the county that Seattle resides in. ",fig.show='hold',fig.align='center'}
 # Side-by-side: map of Seattle and judgemental map of Seattle
 knitr::include_graphics(c("https://content.lib.washington.edu/imls/kcsnapshots/images/wa-state-map.gif",
                           "https://content.lib.washington.edu/imls/kcsnapshots/images/kc-map.gif"))
 ``` 
 
-#### ii. What does Seattle look like?
-```{r, echo=FALSE,out.width="49%",out.height="20%",fig.cap="A map of Seattle side-by-side with a 'judgemental' map sourced by opinions from Seattleites. Our data will confirm or deny these beliefs.",fig.show='hold',fig.align='center'}
+It is important to keep in mind that while Seattle is a major tech-hub and important part of Washington's economy, in the grand scheme of all-Washington things Seattle is very small.
+
+### ii. What does Seattle look like?
+```{r, echo=FALSE,out.width="49%",out.height="20%",fig.cap="A map of Seattle side-by-side with a 'judgemental' map sourced by opinions from Seattleites. ",fig.show='hold',fig.align='center'}
 # Side-by-side: map of Seattle and judgemental map of Seattle
 knitr::include_graphics(c("https://amekorealty.com/wp-content/uploads/2019/05/Seattle-Neighborhoods.gif",
                           "https://external-preview.redd.it/RHtD1UfHwbt-oZJ_5ttvcz9StulzhOWGE_AZvYhDjWU.jpg?auto=webp&s=8108bfe8054b805ae3323422b93a63aeb7f10cad"))
 ``` 
 
-#### iii. What is low-income in Seattle?
+In the map above, we can see that Seattle is divided up into a few arbitrary areas. Throughout this report, when we say North Seattle, we won't mean it necessarily in the sense that is demonstrated in the figure above, but in a more simple sense to establish a dichotomy: North Seattle represents the area above the center of Seattle, and South Seattle represents the area below the center of Seattle.
+
+### iii. What is low-income in Seattle?
 
 Our report will be analyzing income inequality, therefore it is important that there is an understanding of what low-income looks like in Seattle, as economies can vary greatly from city to city throughout America.
 
-Facts:
+Shockingly, families of 5 in Seattle with a household income under $102,900 are considered to be low-income (as based on eligibility for low-income [public housing](https://www.seattlehousing.org/housing/sha-housing/eligibility/income-level-low-income-public-housing)).
 
-- In Seattle, families of 5 with a household income under $102,900 are considered low-income. (Based on eligibility for low-income public housing https://www.seattlehousing.org/housing/sha-housing/eligibility/income-level-low-income-public-housing)
-- WILL ADD MORE LATER
+### iv. Navigating our visualizations
 
-#### iv. Navigating our visualizations
+Throughout our visualizations, we have utilized markers in different ways to indicate points of analysis. Clicking on a marker will activate a pop-up bubble including important information about the area around the marker and important things to watch out for.
 
-Throughout our visualizations, we have utilized markers in different ways to indicate points that are worth further explanation. Clicking on a marker will activate a pop-up bubble including important information about the area around the marker and important things to watch out for.
+The meat of our report lies within the analyses embedded within these markers (due to our analyses reliance on spatial visualization), while larger overviews will be provided in written form adjacent to the visualization.
+
+We hope that you will be able to take the time to peruse our report and learn more about Seattle's rich diversity that is not typically highlighted in popular media. There are also some 'fun markers' with facts that may be interesting for those interesting in moving to Seattle or just learning about Seattle.
 
 ```{r, warning=FALSE}
 # wrapper function to get ACS data more easily
@@ -156,17 +144,21 @@ ggplot(income_inequality, aes(x=Date, y=Ratio)) +
   theme(panel.background = element_rect(fill = 'lavender'))
 ```
 
-We can look into the ratio of the mean income for the highest quintile (top 20 percent) of earners divided by the mean income of the lowest quintile (bottom 20 percent) of earners in King's county to get an idea of income inequality over time. The data is based on multiyear "period" estimates derived from the American Community Survey (ACS) data sample collected over time. 
+By looking into the ratio of the mean income for the highest quintile (top 20 percent) of earners divided by the mean income of the lowest quintile (bottom 20 percent) of earners in King's county we can get an idea of income inequality over time. Here we can see that income inequality has sharply risen from 2010 to 2014 and leveled off since then. (Data is based on multiyear "period" estimates derived from the American Community Survey (ACS) data sample collected over time)
+
+This visualization is just one of many that have been created about Seattle to demonstrate its inequities. It is a proven fact that Seattle has inequities, and the purpose of this report is not to demonstrate this further.
+
+The goal of the visualizations in the following parts of this report is to provide a more intuitive spatial understanding of these inequities. It is one thing to 'know' that inequities exist through numbers and graphs, but seeing inequities can have a much larger impact on an individual in understanding this issue.
+
 
 ### ii. Spatial Distribution of Median Income over 2009-2018
 
-Here are our major observations from graphing median income over time (below):
+Here are our major observations from our spatial visualization of median income over time:
 
 1. Median income increased all across the board.
-2. Median income increased at disproportional rates: 
-    - Median income in North Seattle grew a lot more than in South Seattle
+2. Median income increased at disproportional rates
     
-To guide your exploration of these visualizations, we have marked three locations to watch over time as case studies for income inequality in action.
+To guide your exploration of these visualizations, we have marked three locations as case studies to watch over time to witness income inequality grow in action.
 
 ```{r, warning=FALSE}
 # Function to draw map of income with nice binning.
