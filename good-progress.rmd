@@ -144,7 +144,7 @@ educ_2018 <- get_wa_data(educ_var, 2018)
 ## III. Income Inequality Over the Past Decade
 
 ### i. Income Inequality Over Time in King County 
-```{r, fig.height=4, fig.width=5, warning=FALSE, fig.align='center'}
+```{r, fig.height=4, fig.width=5, warning=FALSE}
 income_inequality <- read_csv("2020RATIO053033.csv")
 income_inequality <- income_inequality %>%
  rename(Date=DATE, Ratio='2020RATIO053033')
@@ -232,26 +232,14 @@ incomeMap(income_2018, "2018") %>%
 
 ### iii. Conclusions
 
-**Rising Income**
-
-  Income increased all throughout Seattle due to the economic growth that Seattle's tech boom has provided. Notably, Seattle is home to Amazon headquarters, bringing lots of new white-collar and blue-collar jobs to the area due to Amazon having become such a powerful force over the past decade.
+  From this visualization we can see jarring effects where for example one area would experience a growth of only $15k/yr in median income over 10 years, while another area would experience a growth of about \$40k/yr. Or another case where an area had relatively uniform income levels, but in just a decade, there was a tract with a \$40k difference over a single border line (~60k vs ~100k). 
   
-  This is also because of Seattle passing a minimum wage law in 2014 that established the long-term plan to increase minimum wage from the \$9/hr it was in 2014 to the \$15/hr it is today. [Learn more here](https://www.cnbc.com/2020/01/02/seattle-passed-a-15-minimum-wage-law-in-2014-heres-how-its-turned-out-so-far.html).
+  This has led to what we see now today where North Seattle generally has higher incomes and South Seattle has lower incomes. We tried looking into potential reasons for what may have caused these findings.
   
-**Income Inequality**
-   
-   We looked into what could have caused this income inequality. There is [some evidence and counter-evidence](https://www.tandfonline.com/doi/full/10.1080/15140326.2019.1620982) that the 2008 recession led to income inequality across the nation. However, a major Seattle development in 2009 is a more likely cause of this issue.
-   
-   In 2009, the Link Light Rail public transportation system was opened to the public, a long rail line connecting South Seattle to North Seattle that for the first time provided a fast mass public transportation system throughout the Seattle area.
-   
-   However this new development came with
-   
-   b. Link light rail grand opening in 2009
-      - This train provided high-salary tech workers easy transportation from low-income areas of South Seattle to their workplace in North Seattle. 
-      - Even though South Seattle is far away from the workplaces of these tech workers in North Seattle, the train shortened commute times and provided more incentive to move into the low-income southern areas of Seattle.
-      - These tech workers indirectly increased rent prices in South Seattle.
-      - Many of Dom's peers that he grew up with were forced to move because their families weren't able to afford rent anymore. They were forced to move further south.
-      
+  One potential contributor is Seattle's recent tech boom and the resulting economic growth from it. Seattle is home to the headquarters of Amazon and Microsoft, and offices of many other big tech companies are located in Seattle also, such as Google, Tableau, and Valve.
+  
+  This has caused a lot of high income white-collar tech workers (who are primarily White) making anywhere from \$120,000 to \$300,000 a year to move into the Seattle area, creating a larger demographic of high tech-workers that might not have been present before. This increasing presence of a large-income demographic next to those in the lower class who are not able to benefit from such growth could contribute to this income inequality gap.
+  
 ## IV. Spatial Distribution of Racial Groups
 
 We've demonstrated that Seattle has income inequality issues, but what about racial inequalities? We have provided markers for important locations in the Seattle area, with different analyses for each group. There is a lot of information to take in!
@@ -531,13 +519,13 @@ Therefore, we must admit that we have not been able to get input from all the co
 
 Other groups in this study have not been given the same treatment, therefore these results must not be taken as truth, but as an indicator.
 
-In addition, this report was completed in a relatively short amount of time which was not enough time to provide an ample analysis of all groups.
+In addition, this report was completed in a relatively short amount of time which means that again, our results cannot be taken as an absolute truth due to our crude analysis.
 
 Future iterations of this project would need more community input and a more detailed analysis of the experiences of all groups in the large area that is Seattle.
 
 ## VII. Final Implications
 
-Spatial visualizations like these are vital for public servants to do their job in an equitable manner.
+Spatial visualizations like these are vital for public servants to do their job in an equitable manner. Our visualizations indicate that there are issues, and if these visualizations become fully developed, they could have major impacts in our world.
 
 On July 31st 2020, just last week (at the time of publication), a [free COVID-19 testing site](https://www.seattletimes.com/seattle-news/health/seattle-to-open-another-free-coronavirus-testing-location-to-reach-more-bipoc/) was announced to open in the Rainier Beach neighborhood of South Seattle due to the high populations of Black, Latino, and other populations of color that are disproportionately impacted by the pandemic. This was a vital policy decision that was informed by data analyses like ours. Without data available like this, policy decisions would be made 'blind' and be a much more ineffective process leaving many communites of color susceptible to institutional neglect.
 
