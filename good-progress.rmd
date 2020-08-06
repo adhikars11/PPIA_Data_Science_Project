@@ -23,13 +23,7 @@ options(tigris_use_cache = TRUE)
 
 ```{r, eval = TRUE, include=FALSE, warning=FALSE}
 census_api_key('5714ee4a8992db912a5256472fdf0fef5de96f64', install = TRUE, overwrite = TRUE)
-#api_key <- "eb333507290d5a3fbd78855b5e62c9a9953924c5"
-# census_vars_1990 <- load_variables(1990, "sf1", cache = TRUE)
-# census_vars <- load_variables(2000, "sf1", cache = TRUE)
-# acs_vars <- load_variables(2018, "acs5", cache = TRUE)
-# View(acs_vars)
-# View(census_vars_1990)
-# View(census_vars)
+# might have to restart R to get the key working properly
 ```
 
 ## I. Introduction and Purpose of the Project
@@ -49,7 +43,7 @@ The value of visualizations like this are increasingly more important in light o
 The findings from our report would be most relevant for those who...
 
 - work in a field that impact Seattle communities (public health, research, policymaker)
-- are moving to Seattle and trying to figure out what they should live
+- are moving to Seattle and trying to figure out where they should live
 - are interested in income inequality
 - are interested in gentrification and housing inequality
 - are interested in racial inequity and segregation
@@ -156,7 +150,7 @@ educ_2018 <- get_wa_data(educ_var, 2018)
 ## III. Income Inequality Over the Past Decade
 
 ### i. Income Inequality Over Time in King County 
-```{r, fig.height=4, fig.width=5, warning=FALSE}
+```{r, fig.height=4, fig.width=5, warning=FALSE, fig.align='center'}
 income_inequality <- read_csv("2020RATIO053033.csv")
 income_inequality <- income_inequality %>%
  rename(Date=DATE, Ratio='2020RATIO053033')
@@ -312,7 +306,6 @@ Whites are **not** located in South Seattle areas such as New Holly where there 
 
 #### a. Distribution of Whites, 2018
 ```{r, warning=FALSE}
-#"DESCRIPTION_GOES_HERE </br><a href=\"LINK_GOES_HERE\" target=\"_blank\">  Click link to learn more.</a>"
 name <- c("Geographical center of Seattle", "Mercer Island", "West Seattle", "Beacon Hill", "Rainier Valley", "Dominick's House", "Northern Border of Seattle", "Southern Border of Seattle", "North Seattle", "White Center")
 lat <- c(47.601216, 47.558568, 47.548684, 47.577065, 47.520874, 47.516997, 47.734079, 47.499237, 47.671000, 47.512614)
 long <- c(-122.327752, -122.221523, -122.395931, -122.310609,-122.272296, -122.283015, -122.334456, -122.264753, -122.359690, -122.361942)
@@ -342,7 +335,6 @@ Shockingly, or perhaps not, this map shows that Blacks are primarily where White
 
 #### a. Distribution of Blacks, 2018
 ```{r, warning=FALSE}
-#"DESCRIPTION_GOES_HERE </br><a href=\"LINK_GOES_HERE\" target=\"_blank\">  Click link to learn more.</a>"
 name <- c("Geographical center of Seattle", "Mercer Island", "West Seattle", "Beacon Hill", "Rainier Valley", "Dominick's House", "Northern Border of Seattle", "Southern Border of Seattle", "North Seattle", "White Center")
 lat <- c(47.601216, 47.558568, 47.548684, 47.577065, 47.520874, 47.516997, 47.734079, 47.499237, 47.671000, 47.512614)
 long <- c(-122.327752, -122.221523, -122.395931, -122.310609,-122.272296, -122.283015, -122.334456, -122.264753, -122.359690, -122.361942)
@@ -377,7 +369,6 @@ However, there are important differences such as in Downtown Seattle and Mercer 
 
 #### a. Distribution of Asians, 2018
 ```{r, warning=FALSE}
-
 name <- c("Geographical center of Seattle", "Mercer Island", "West Seattle", "Beacon Hill", "Rainier Valley", "Dominick's House", "Northern Border of Seattle", "Southern Border of Seattle", "North Seattle", "White Center", "University of Washington Campus")
 lat <- c(47.601216, 47.558568, 47.548684, 47.577065, 47.520874, 47.516997, 47.734079, 47.499237, 47.671000, 47.512614, 47.655115)
 long <- c(-122.327752, -122.221523, -122.395931, -122.310609,-122.272296, -122.283015, -122.334456, -122.264753, -122.359690, -122.361942, -122.306481)
