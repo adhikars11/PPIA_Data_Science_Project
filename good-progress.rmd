@@ -329,11 +329,11 @@ raceMap(white_var, 2018, "Whites",
   marker(landmarks)
 ```
 
-### ii. Blacks
+### ii. Black Population
 
-Shockingly, or perhaps not, this map shows that Blacks are primarily where Whites are not. **Generally, anywhere where Blacks are, Whites are not.**
+Shockingly, or perhaps not, this map shows that the Black population is primarily located where Whites are not. **Generally, anywhere where Black people are, Whites are not.**
 
-#### a. Distribution of Blacks, 2018
+#### a. Distribution of Black Population, 2018
 ```{r, warning=FALSE}
 name <- c("Geographical center of Seattle", "Mercer Island", "West Seattle", "Beacon Hill", "Rainier Valley", "Dominick's House", "Northern Border of Seattle", "Southern Border of Seattle", "North Seattle", "White Center")
 lat <- c(47.601216, 47.558568, 47.548684, 47.577065, 47.520874, 47.516997, 47.734079, 47.499237, 47.671000, 47.512614)
@@ -350,20 +350,20 @@ description <- c("Everything that Seattle is known for in media is located above
                  "woo!",
                  "Below this point is officially Seattle!",
                  "Above this point is officially Seattle!
-                 </br></br> It is important to look at the area below this marker! There are not many Blacks in Seattle due to them being pushed into the lower priced southern regions: south Seattle and south of Seattle.",
+                 </br></br> It is important to look at the area below this marker! There are not many Black people in Seattle due to them being pushed into the lower priced southern regions: south Seattle and south of Seattle.",
                  "The entire area between the center of Seattle (marker directly below) and the northern border of Seattle (marker directly above) is COMPLETELY DARK. A complete contrast from the area between the center of Seattle and the southern border of Seattle.",
                  "Nicknamed 'Rat City', White Center is an unincorporated Seattle area with a tight-knit diverse community that is unfortunately severely underfunded compared to actual Seattle areas, bringing meaning to the unofficial motto: 'White Center - not so white, not so centered'.
                  </br><a href=\"https://www.seattletimes.com/pacific-nw-magazine/as-prices-push-people-out-of-seattle-white-center-celebrates-community-and-diversity/\" target=\"_blank\">Click link to learn more.</a>")
 landmarks <- data.frame(name, lat, long, description)
 
-raceMap(black_var, 2018, "Blacks", 
+raceMap(black_var, 2018, "Black Individuals", 
         c(0, 500, 1000, 1500, 2000)) %>%
   marker(landmarks)
 ```
 
 ### iii. Asians
 
-We can see that Asians have similar distributions to Blacks, demonstrating that **people of color tend to live near other people of color** in the Seattle area.
+We can see that Asians have similar distributions to the Black population, demonstrating that **people of color tend to live near other people of color** in the Seattle area.
 
 However, there are important differences such as in Downtown Seattle and Mercer Island.
 
@@ -373,18 +373,18 @@ name <- c("Geographical center of Seattle", "Mercer Island", "West Seattle", "Be
 lat <- c(47.601216, 47.558568, 47.548684, 47.577065, 47.520874, 47.516997, 47.734079, 47.499237, 47.671000, 47.512614, 47.655115)
 long <- c(-122.327752, -122.221523, -122.395931, -122.310609,-122.272296, -122.283015, -122.334456, -122.264753, -122.359690, -122.361942, -122.306481)
 description <- c("Everything that Seattle is known for in media is located above this area, with downtown Seattle being just north of here.
-                 </br></br> We see in downtown Seattle above this major one of the major differences between Asians and Blacks, where Asians are heavily located in this area unlike how Blacks are. A major explanation for this is due to the high number of East and South Asian white collar tech workers living in apartments in the downtown area.",
-                 "An affluential, mostly residential area. The median income for Mercer Island is around $200,000. </br></br> Note that there are a significantly larger number of Asians in this area compared to Blacks. This could be due to a lot of reasons. A potential cause is the presence of a large number of affluential East Asians in the Seattle area.",
+                 </br></br> We see in downtown Seattle above this major one of the major differences between Asians and the Black population, where Asians are heavily located in this area unlike how the Black population is A major explanation for this is due to the high number of East and South Asian white collar tech workers living in apartments in the downtown area.",
+                 "An affluential, mostly residential area. The median income for Mercer Island is around $200,000. </br></br> Note that there are a significantly larger number of Asians in this area compared to the number of the Black individuals. This could be due to a lot of reasons. A potential cause is the presence of a large number of affluential East Asians in the Seattle area.",
                  "West Seattle is known for being a residential area near the waterfront, with high property values and nice beaches.",
                  "The strip of land from Beacon Hill all the way to Rainier Valley (the marker below) is a HUGE residential area with many households, an interesting area to watch out for throughout the other maps. 
-                 </br></br> This area is entirely lit up! This map shows that Asians tend to live in same area where Blacks live.",
+                 </br></br> This area is entirely lit up! This map shows that Asians tend to live in same area where Black people live.",
                  "The strip of land from Rainier Valley all the way to Beacon Hill (the marker above) is a HUGE residential area with many households, an interesting area to watch out for throughout the other maps. 
-                 </br></br> This area is entirely lit up! This map shows that Asians tend to live in same area where Blacks live (where Whites don't live).
+                 </br></br> This area is entirely lit up! This map shows that Asians tend to live in same area where Black people live (where Whites don't live).
                  </br></br>This sounds familiar... segregation?",
                  "woo!",
                  "Below this point is officially Seattle!",
                  "Above this point is officially Seattle!
-                 </br></br> It is important to look at the area below this marker! Like Blacks, there are not many Asians in Seattle due to them being pushed into the lower priced southern regions: south Seattle and south of Seattle.",
+                 </br></br> It is important to look at the area below this marker! Similarly to Black people, there are not many Asians in Seattle due to them being pushed into the lower priced southern regions: south Seattle and south of Seattle.",
                  "The entire area between the center of Seattle (marker directly below) and the northern border of Seattle (marker directly above) is COMPLETELY DARK. A complete contrast from the area between the center of Seattle and the southern border of Seattle.",
                  "Nicknamed 'Rat City', White Center is an unincorporated Seattle area with a tight-knit diverse community that is unfortunately severely underfunded compared to actual Seattle areas, bringing meaning to the unofficial motto: 'White Center - not so white, not so centered'.
                  </br><a href=\"https://www.seattletimes.com/pacific-nw-magazine/as-prices-push-people-out-of-seattle-white-center-celebrates-community-and-diversity/\" target=\"_blank\">Click link to learn more.</a>",
@@ -397,7 +397,7 @@ raceMap(asian_var, 2018, "Asians",
 
 ### iv. Conclusions
 
-These visualizations demonstrate that there is a pattern between income lines in Seattle and racial lines. **Whites were primarily located in areas where Blacks and Asians weren't.**
+These visualizations demonstrate that there is a pattern between income lines in Seattle and racial lines. **Whites were primarily located in areas where the Black and Asian population was not.**
 
 There are **critical limitations** of the visualizations above that we must highlight. The data is based on response to race, which means that specific ethnic groups such as Latinos and Asian subgroups did not have their story told.
 
