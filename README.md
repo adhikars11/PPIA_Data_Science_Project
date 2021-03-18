@@ -1,1 +1,2 @@
 # PPIA_Data_Science_Project
+This project was conducted by Shisham Adhikari and Domnick Ta as a part of the Public Policy and International Affairs (PPIA)--Data Analytics Track 2021 program at Carnegie Mellon University. There is a large body of articles that have clearly demonstrated that have established a fact that there is clear income inequality and de facto racial segregation in Seattle. However, there has never been a visual to provide an intuitive spatial understanding of this phenomenon and this project is an attempt to fill the gap. 
